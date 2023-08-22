@@ -17,8 +17,6 @@ namespace TecFagTilmeldingApp.Custom
             Navn = navn;
             Lærer = lærer;
         }
-
-
-
+        
     }
 }
