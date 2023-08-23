@@ -17,6 +17,27 @@ namespace TecFagTilmeldingApp.Custom
             Navn = navn;
             Lærer = lærer;
         }
-        
+
+
+        /// Denne metode har en metode signatur som følgende: string
+
+        public string WriteText()
+        {
+            return "Hello world!";
+        }
+        /// Denne metode har en metode signatur som følgende: string, string
+
+        public string WriteText(string valueToDisplay)
+        {
+            return $"Hello {valueToDisplay}!";
+        }
+
+        /// Denne metode har en metode signatur som følgende: string, string, int
+
+        public string WriteText(string valueToDisplay, int alder)
+        {
+            return $"Hello {valueToDisplay}!, du er {alder.ToString()} år gammel.";
+        }
+
     }
 }

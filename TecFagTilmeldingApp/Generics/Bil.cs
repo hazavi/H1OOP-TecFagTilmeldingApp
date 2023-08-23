@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TecFagTilmeldingApp.Generics
 {
-    internal class Bil 
+    internal class Bil : Køretøj
     {
-        public double MotorStørrelsen { get; set; }
+        public double MotorStørrelse { get; set; }
 
-        public Bil(string? mærke, string? model, int motorStørrelsen)
+        public Bil(string? mærke, string? model, double motorStørrelse) : base(mærke, model)
         {
-            MotorStørrelsen = motorStørrelsen;
+            MotorStørrelse = motorStørrelse;
         }
     }
 }

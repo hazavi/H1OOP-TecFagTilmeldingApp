@@ -9,7 +9,25 @@ namespace TecFagTilmeldingApp
     {
         static void Main(string[] args)
         {
+            while(true)
+            {
+                Console.Write("indtast 1 for at afspille: ");
+                string talinput = Console.ReadLine();
 
+                if(talinput == "1")
+                {
+                    string appf = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"Sound\ayayayay.wav");
+
+                    System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer();
+                    soundPlayer.SoundLocation = appf;
+                    soundPlayer.Play();
+
+                }
+                else
+                {
+                    Console.WriteLine("FEJL");
+                }
+            }
             //Tilføjer Lærerer
 
             Lærer? lære1 = new("Niels", "Olsen", new DateTime(1971, 2, 23), "CIT");
@@ -36,9 +54,14 @@ namespace TecFagTilmeldingApp
             Fagne.Add(new Fag("Database Programmering", jack));
             Fagne.Add(new Fag("Computerteknologi", bo));
 
+            //TryOUTS
+            
+
             // DO-WHILE lykke | gentager programmet
             do
             {
+                lære1.ShowBirthDate();
+
                 // Oprettelse af eleven
                 Console.Write("ForNavn: ");
                 string? ForNavn = Console.ReadLine();
@@ -47,7 +70,7 @@ namespace TecFagTilmeldingApp
                 string? EfterNavn = Console.ReadLine();
 
                 Console.Write("Fødselsdag (dd-MM-yyyy): ");
-                string? Fødselsdag = Console.ReadLine();
+                string Fødselsdag = Console.ReadLine();
 
                 string format = "dd-MM-yyyy";
                 DateTime fødselsdag = DateTime.ParseExact(Fødselsdag, format, null);
@@ -58,46 +81,50 @@ namespace TecFagTilmeldingApp
                     Console.WriteLine($"Fag id: {i}, Fag Navn: {Fagne[i].Navn}");
                 }
 
-                Console.Write("Angiv ID for det fag som elev skal have: ");
+                Console.Write("\nAngiv ID for det fag som elev skal have: ");
 
                 if (int.TryParse(Console.ReadLine(), out int ID) && ID >= 0 && ID < Fagne.Count)
                 {
-                    //Oprette den nye elev
-                    Elev nyElev = new Elev(ForNavn, EfterNavn, fødselsdag);
-                    PersonModel Eleven = nyElev.PersonInfo;
-
-
-                    //Valgte ID
                     Fag ValgteFag = Fagne[ID];
-                    Console.WriteLine($"{ForNavn} {EfterNavn} er nu tilmeldt '{ValgteFag.Navn}'");
+                    //Valgte ID
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\n{ForNavn} {EfterNavn} er nu tilmeldt '{ValgteFag.Navn}'");
+                    Console.ResetColor();
 
-                    // Tilmelder eleven
-                    Tilmelding tilmeld = new(nyElev, ValgteFag);
-                    tilmeldelev.Add(tilmeld);
+                    Console.Write("\n[J/N]: ");
+                    string svar = Console.ReadLine().ToUpper();
 
-
-                    // JA NEJ
-                    Console.Write("[J/N]: ");
-                    string? svar = Console.ReadLine();
-
-                    switch (svar.ToUpper())
+                    if (svar == "J")
                     {
-                        case "J":
-                            Console.Clear();
-                            Console.WriteLine($"{ForNavn} {EfterNavn}({nyElev.Alder} år gammel) er tilmeldt '{ValgteFag.Navn}'");
-                            Console.WriteLine("--task key for at forsætte--");
-                            Console.ReadKey();
-                            break;
-                        case "N":
-                            Console.WriteLine("Du valgte Nej. \n--task key for at forsætte--");
-                            Console.ReadKey();
-                            break;
-                        default:
-                            Console.WriteLine("Ugyldigt valg. Prøve igen!");
-                            Console.ReadKey();
-                            break;
-                    }
+                        //Oprette den nye elev
+                        Elev nyElev = new Elev(ForNavn, EfterNavn, fødselsdag);
+                        PersonModel Eleven = nyElev.PersonInfo;
 
+                        // Tilmelder eleven
+                        Tilmelding tilmeld = new(nyElev, ValgteFag);
+                        tilmeldelev.Add(tilmeld);
+
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"{ForNavn} {EfterNavn}({nyElev.Alder} år gammel) er tilmeldt '{ValgteFag.Navn}'");
+                        Console.ResetColor();
+                        Console.WriteLine("--tast key for at forsætte--");
+
+                        Console.ReadKey();
+
+                    }
+                    else if (svar == "N")
+                    {
+                        Console.WriteLine("Du valgte Nej. \n--task key for at forsætte--");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldigt valg. Prøve igen!");
+                        Console.ReadKey();
+
+                    }
+                    
                 }
                 else
                 {
@@ -105,22 +132,29 @@ namespace TecFagTilmeldingApp
                     Console.ReadKey();
 
                 }
+
+                // JA NEJ
+                
+
                 Console.Clear();
 
                 //Viser alle Tilmelde Elever
                 Console.WriteLine("Alle Tilmelde Elever");
+                int counter = 1;
                 foreach (var tilmelding in tilmeldelev)
                 {
-                    Console.WriteLine($"{tilmeldelev.Count}. {tilmelding.Elev.PersonInfo.ForNavn} {tilmelding.Elev.PersonInfo.EfterNavn} ({tilmelding.Fag.Navn}) ");
+                    Console.WriteLine($"{counter}. {tilmelding.Elev.PersonInfo.ForNavn} {tilmelding.Elev.PersonInfo.EfterNavn} ({tilmelding.Fag.Navn}) ");
+                    counter++;
                 }
                 Console.ReadKey();
 
                 Console.Clear();
 
-
             } while (true);
 
+
         }
+
 
     }
 

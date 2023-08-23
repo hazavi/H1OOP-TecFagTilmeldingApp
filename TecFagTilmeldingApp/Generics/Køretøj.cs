@@ -11,13 +11,12 @@ namespace TecFagTilmeldingApp.Generics
         public string? Mærke { get; set; }
         public string? Model { get; set; }
 
-        public Køretøj(string? mærke, string? model ) 
+        public Køretøj(string? mærke, string? model)
         {
             Mærke = mærke;
             Model = model;
+
+
         }
-
-
-
     }
 }
