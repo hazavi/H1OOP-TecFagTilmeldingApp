@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,13 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Program.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Sounds\ayayayay.wav" />
-    <None Remove="Sound\ayayayay.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Sound\ayayayay.wav" />
+    <Content Include="Sounds\ayayayay.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
