@@ -18,16 +18,6 @@ namespace TecFagTilmeldingApp
                 {
                     string appf = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"Sound\ayayayay.wav");
 
-                    System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer();
-                    soundPlayer.SoundLocation = appf;
-                    soundPlayer.Play();
-
-                }
-                else
-                {
-                    Console.WriteLine("FEJL");
-                }
-            }
             //Tilføjer Lærerer
 
             Lærer? lære1 = new("Niels", "Olsen", new DateTime(1971, 2, 23), "CIT");
