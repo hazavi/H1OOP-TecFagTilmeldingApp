@@ -18,7 +18,19 @@ namespace TecFagTilmeldingApp.Custom
             string defaultInfo = ShowAllInfo2();
 
         }
+        public override List<string> GetInfo(List<Tilmelding> tilmeldings)
+        {
+            List<string> info = new();
+            foreach (Tilmelding tilmeldinger in tilmeldings)
+            {
+                if (tilmeldinger.Fag.Lærer.ForNavn == PersonInfo.ForNavn && tilmeldinger.Fag.Lærer.EfterNavn == PersonInfo.EfterNavn)
+                {
+                    info.Add(tilmeldinger.Fag.Navn);
+                }
+            }
 
+            return info;
+        }
         /// Oprindlig metode ligger i base klassen og er en abstrakt metode.
         protected override string ShowAllInfo()
         {
@@ -42,6 +54,12 @@ namespace TecFagTilmeldingApp.Custom
         {
             string format = brugerDefineretFormat == CountryCode.EN ? "yyyy.MM.dd" : "dd-MM-yyyy";
             return $"Format: {brugerDefineretFormat} \nFødselsdags Dato: {Fødselsdag.ToString(format)}";
+        }
+
+        //KøreTøjer OPG
+        protected override string ShowMyIdentity()
+        {
+            return $"Jeg er en Lærer";
         }
     }
 }

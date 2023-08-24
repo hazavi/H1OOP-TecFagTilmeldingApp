@@ -20,13 +20,13 @@ namespace TecFagTilmeldingApp.Custom
         public PersonModel PersonInfo { get; set; }
         public DateTime Fødselsdag { get; set; }
         public int Alder { get; set; }
-        
         public Person(string? fornavn, string? efternavn, DateTime fødselsdag)
         {
             PersonInfo = new() { ForNavn = fornavn, EfterNavn = efternavn };
             Fødselsdag = fødselsdag;
             Alder = new AlderBeregner(fødselsdag).Alder;
         }
+        public abstract List<string> GetInfo(List<Tilmelding> tilmeldings);
 
         /// Brug af protected modifier for at metoden er "public" internt i arven
         /// men private for alle andre types(klasse).
@@ -36,7 +36,6 @@ namespace TecFagTilmeldingApp.Custom
         }
 
         protected abstract string ShowAllInfo();
-
 
         protected virtual string ShowAllInfo2()
         {
@@ -55,5 +54,24 @@ namespace TecFagTilmeldingApp.Custom
             string format = brugerDefineretFormat == CountryCode.EN ? "yyyy.MM.dd" : "dd-MM-yyyy";
             return $"Format: {brugerDefineretFormat} \nFødselsdags Dato: {Fødselsdag.ToString(format)}";
         }
+
+
+        //KøreTøjer OPG 
+        
+        //SayHello Polymorfi
+        public string SayHello(string ElevEllerLærer)
+        {
+            return $"Hej, jeg er en {ElevEllerLærer}.";
+        }
+
+        public string SayHello(string ElevEllerLærer, string Navn)
+        {
+            return $"Hej, jeg er en {ElevEllerLærer} og jeg hedder {Navn}";
+        }
+
+        // Show My Identity | abstract metode
+        protected abstract string ShowMyIdentity();
+
+
     }
 }

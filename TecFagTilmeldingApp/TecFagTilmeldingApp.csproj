@@ -9,6 +9,8 @@
 
 
   <ItemGroup>
+    <None Remove="Animals\cat.wav" />
+    <None Remove="Animals\dog.wav" />
     <None Remove="Sounds\ayayayay.wav" />
   </ItemGroup>
 
@@ -21,6 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Animals\cat.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Animals\dog.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\ayayayay.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

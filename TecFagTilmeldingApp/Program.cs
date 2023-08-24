@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Security.Cryptography.X509Certificates;
+using TecFagTilmeldingApp.Animals;
 using TecFagTilmeldingApp.Custom;
 using TecFagTilmeldingApp.Models;
 
@@ -9,6 +10,31 @@ namespace TecFagTilmeldingApp
     {
         static void Main(string[] args)
         {
+            //Lydefil afspiller DOG og Cat | 
+            Animal makeSound = new Animal();
+            Console.WriteLine(makeSound.MakeSound()); 
+
+            Console.Write("1. Dog \n2. Cat \nValg: ");
+            int valg = Int32.Parse(Console.ReadLine());
+
+            if (valg  == 1)
+            {
+                Console.WriteLine("Dog lyd!");
+                Dog hund = new Dog();
+                hund.MakeSound();
+
+            } else if (valg == 2) 
+            {
+                Console.WriteLine("Cat lyd!");
+                Cat kat = new Cat();
+                kat.MakeSound();
+            }
+            else
+            {
+                Console.WriteLine("Ugyldigt valg!");
+            }
+
+            //Custom Lyd
             while (true)
             {
                 Console.Write("indtast 1 for at afspille: ");
@@ -42,6 +68,7 @@ namespace TecFagTilmeldingApp
                 //Data | Lister 
                 List<Fag> Fagne = new List<Fag>();
                 List<Tilmelding> tilmeldelev = new List<Tilmelding>();
+
 
                 Fagne.Add(new Fag("Grundlæggende Programmering", niels));
                 Fagne.Add(new Fag("OOP", niels));
