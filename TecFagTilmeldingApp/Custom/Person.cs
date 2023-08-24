@@ -58,16 +58,6 @@ namespace TecFagTilmeldingApp.Custom
 
         //KøreTøjer OPG 
         
-        //SayHello Polymorfi
-        public string SayHello(string ElevEllerLærer)
-        {
-            return $"Hej, jeg er en {ElevEllerLærer}.";
-        }
-
-        public string SayHello(string ElevEllerLærer, string Navn)
-        {
-            return $"Hej, jeg er en {ElevEllerLærer} og jeg hedder {Navn}";
-        }
 
         // Show My Identity | abstract metode 
         protected abstract string ShowMyIdentity();

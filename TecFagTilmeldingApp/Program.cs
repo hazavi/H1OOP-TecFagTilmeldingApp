@@ -79,7 +79,9 @@ namespace TecFagTilmeldingApp
                 Fagne.Add(new Fag("Computerteknologi", bo));
 
                 //TryOUTS
-
+                Personen who = new Personen();
+                who.SayHello("Elev");
+                who.SayHello("Elev", "Peter");
 
                 // DO-WHILE lykke | gentager programmet
                 do
