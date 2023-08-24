@@ -69,7 +69,7 @@ namespace TecFagTilmeldingApp.Custom
             return $"Hej, jeg er en {ElevEllerLærer} og jeg hedder {Navn}";
         }
 
-        // Show My Identity | abstract metode
+        // Show My Identity | abstract metode 
         protected abstract string ShowMyIdentity();
 
 
