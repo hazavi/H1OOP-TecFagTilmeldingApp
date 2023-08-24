@@ -9,7 +9,12 @@ namespace TecFagTilmeldingApp
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {              
+            //TryOUTS
+            Personen who = new Personen();
+            who.SayHello("Elev");
+            who.SayHello("Elev", "Peter");
+
             //Lydefil afspiller DOG og Cat | 
             Animal makeSound = new Animal();
             Console.WriteLine(makeSound.MakeSound()); 
@@ -78,10 +83,6 @@ namespace TecFagTilmeldingApp
                 Fagne.Add(new Fag("Database Programmering", jack));
                 Fagne.Add(new Fag("Computerteknologi", bo));
 
-                //TryOUTS
-                Personen who = new Personen();
-                who.SayHello("Elev");
-                who.SayHello("Elev", "Peter");
 
                 // DO-WHILE lykke | gentager programmet
                 do
